@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login | Light in the Web</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg,purple, #f5f0ff);
+    padding: 20px;
+}
+
+.container {
+    background: white;
+    width: 100%;
+    max-width: 400px;
+    padding: 35px;
+    border-radius: 18px;
+    box-shadow: 0 5px 25px #00000020;
+}
+
+.logo {
+    text-align: center;
+    color: rgb(164, 51, 131);
+    font-size: 23px;
+    font-weight: bold;
+}
+
+h2 {
+    text-align: center;
+    color: #443477;
+    margin: 20px 0 10px;
+}
+
+.subtitle {
+    text-align: center;
+    color: #777;
+    margin-bottom: 25px;
+    line-height: 1.5;
+}
+
+label {
+    display: block;
+    color: #443477;
+    font-weight: bold;
+    margin-bottom: 7px;
+}
+
+input {
+    width: 100%;
+    padding: 13px;
+    margin-bottom: 18px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    outline: none;
+}
+
+input:focus {
+    border-color: #62539f;
+}
+
+.password-box {
+    position: relative;
+}
+
+.password-box input {
+    padding-right: 60px;
+}
+
+.show-btn {
+    position: absolute;
+    right: 10px;
+    top: 12px;
+    border: none;
+    background: none;
+    color: #62539f;
+    cursor: pointer;
+}
+
+.forgot {
+    display: block;
+    text-align: right;
+    margin: -7px 0 20px;
+    color: #62539f;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.main-btn {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 25px;
+    background: #62539f;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.main-btn:hover {
+    background: #443477;
+}
+
+.back-btn {
+    display: block;
+    text-align: center;
+    margin-top: 18px;
+    color: #62539f;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.message {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.demo {
+    background: #f1ecff;
+    padding: 12px;
+    border-radius: 8px;
+    margin-top: 20px;
+    color: #443477;
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+footer {
+    text-align: center;
+    color: #888;
+    font-size: 12px;
+    margin-top: 22px;
+}
+
+.hidden {
+    display: none;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="logo">Light in the Web</div>
+
+    <!-- LOGIN PAGE -->
+    <div id="loginPage">
+
+        <p class="subtitle">Sign in to continue to your account.</p>
+
+        <form id="loginForm">
+
+            <label>Email Address</label>
+            <input type="email" id="loginEmail"
+                   placeholder="Enter your email" required>
+
+            <label>Password</label>
+
+            <div class="password-box">
+                <input type="password" id="loginPassword"
+                       placeholder="Enter your password" required>
+
+                <button type="button" class="show-btn"
+                        onclick="togglePassword('loginPassword', this)">
+                    Show
+                </button>
+            </div>
+
+            <a href="#" class="forgot" onclick="showForgot(event)">
+                Forgot Password?
+            </a>
+
+            <button type="submit" class="main-btn">Sign In</button>
+
+            <p id="loginMessage" class="message"></p>
+        </form>
+
+    </div>
+
+    <!-- FORGOT PASSWORD PAGE -->
+    <div id="forgotPage" class="hidden">
+
+        <h2>Forgot Password?</h2>
+
+        <p class="subtitle">
+            Enter your registered email address to verify your account.
+        </p>
+
+        <form id="forgotForm">
+
+            <label>Email Address</label>
+            <input type="email" id="forgotEmail"
+                   placeholder="Enter your registered email" required>
+
+            <button type="submit" class="main-btn">
+                Verify Email
+            </button>
+
+            <p id="forgotMessage" class="message"></p>
+
+        </form>
+
+        <a class="back-btn" onclick="showLogin()">← Back to Login</a>
+
+    </div>
+
+    <!-- RESET PASSWORD PAGE -->
+    <div id="resetPage" class="hidden">
+
+        <h2>Reset Password</h2>
+
+        <p class="subtitle">
+            Create a new password for your account.
+        </p>
+
+        <form id="resetForm">
+
+            <label>New Password</label>
+            <input type="password" id="newPassword"
+                   placeholder="Enter new password"
+                   minlength="6" required>
+
+            <label>Confirm New Password</label>
+            <input type="password" id="confirmPassword"
+                   placeholder="Confirm new password"
+                   minlength="6" required>
+
+            <button type="submit" class="main-btn">
+                Reset Password
+            </button>
+
+            <p id="resetMessage" class="message"></p>
+
+        </form>
+
+        <a class="back-btn" onclick="showLogin()">← Back to Login</a>
+
+    </div>
+
+    <footer>
+        © 2026 Light in the Web | Community Service Project
+    </footer>
+
+</div>
+
+<script>
+
+// Demo account
+let accountEmail = "allianajanedablo@gmail.com";
+let accountPassword = "aj12345678";
+
+// Switch pages
+function hideAll() {
+    document.getElementById("loginPage").classList.add("hidden");
+    document.getElementById("forgotPage").classList.add("hidden");
+    document.getElementById("resetPage").classList.add("hidden");
+}
+
+function showLogin() {
+    hideAll();
+    document.getElementById("loginPage").classList.remove("hidden");
+}
+
+function showForgot(event) {
+    event.preventDefault();
+    hideAll();
+    document.getElementById("forgotPage").classList.remove("hidden");
+}
+
+// Show and hide password
+function togglePassword(id, button) {
+    const input = document.getElementById(id);
+
+    if (input.type === "password") {
+        input.type = "text";
+        button.textContent = "Hide";
+    } else {
+        input.type = "password";
+        button.textContent = "Show";
+    }
+}
+
+// Login
+document.getElementById("loginForm").addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    const email = document.getElementById("loginEmail").value.trim();
+    const password = document.getElementById("loginPassword").value;
+    const message = document.getElementById("loginMessage");
+
+    if (email === accountEmail && password === accountPassword) {
+        message.style.color = "green";
+        message.textContent = "Login successful! Redirecting...";
+
+        setTimeout(function() {
+            window.location.href = "dablo home.html";
+        }, 1000);
+
+    } else {
+        message.style.color = "red";
+        message.textContent = "Incorrect email or password.";
+    }
+});
+
+// Verify email
+document.getElementById("forgotForm").addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    const email = document.getElementById("forgotEmail").value.trim();
+    const message = document.getElementById("forgotMessage");
+
+    if (email === accountEmail) {
+        message.style.color = "green";
+        message.textContent = "Email verified! You can now create a new password.";
+
+        setTimeout(function() {
+            hideAll();
+            document.getElementById("resetPage").classList.remove("hidden");
+        }, 1000);
+
+    } else {
+        message.style.color = "red";
+        message.textContent = "Email address not found. Please try again.";
+    }
+});
+
+// Reset password
+document.getElementById("resetForm").addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    const newPass = document.getElementById("newPassword").value;
+    const confirmPass = document.getElementById("confirmPassword").value;
+    const message = document.getElementById("resetMessage");
+
+    if (newPass !== confirmPass) {
+        message.style.color = "red";
+        message.textContent = "Passwords do not match.";
+        return;
+    }
+
+    accountPassword = newPass;
+
+    message.style.color = "green";
+    message.textContent = "Password successfully changed! You can now log in.";
+
+    document.getElementById("resetForm").reset();
+
+    setTimeout(function() {
+        showLogin();
+    }, 1500);
+});
+
+</script>
+
+</body>
+</html>

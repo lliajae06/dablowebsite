@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About | Light in the Web</title>
+
+<style>
+* { margin:0; padding:0; box-sizing:border-box; scroll-behavior:smooth; }
+
+body {
+    font-family:Arial,sans-serif;
+    background:#f5f3ff;
+    color:#373052;
+    line-height:1.6;
+}
+
+header {
+    background:white;
+    padding:18px 7%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:15px;
+    box-shadow:0 3px 12px #00000012;
+}
+
+.logo { color:#7566b5; font-size:22px; font-weight:bold; }
+
+nav { display:flex; flex-wrap:wrap; gap:9px; }
+
+nav a {
+    text-decoration:none;
+    color:#62539f;
+    background:#f0edff;
+    padding:9px 15px;
+    border-radius:20px;
+    font-size:13px;
+    font-weight:bold;
+    transition:.3s;
+}
+
+nav a:hover, nav a.active {
+    background:#7566b5;
+    color:white;
+}
+
+.hero {
+    min-height:350px;
+    padding:75px 10%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    background:linear-gradient(135deg,#e8eaff,#c5cbed);
+}
+
+.hero-content { max-width:750px; }
+
+.hero h1 {
+    color:#494078;
+    font-size:43px;
+    margin-bottom:15px;
+}
+
+.hero p { font-size:17px; }
+
+section { padding:65px 9%; }
+
+.title {
+    text-align:center;
+    color:#62539f;
+    font-size:30px;
+    margin-bottom:25px;
+}
+
+.content {
+    background:white;
+    max-width:900px;
+    padding:35px;
+    border-radius:16px;
+    margin:auto;
+    box-shadow:0 4px 15px #00000010;
+}
+
+.content h3 {
+    color:#62539f;
+    margin:22px 0 10px;
+}
+
+.content p { margin-bottom:15px; }
+
+.values {
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:15px;
+    margin-top:20px;
+}
+
+.value-card {
+    background:#eeecff;
+    padding:22px;
+    border-radius:12px;
+    text-align:center;
+    color:#62539f;
+    font-weight:bold;
+}
+
+footer {
+    background:#514777;
+    color:white;
+    text-align:center;
+    padding:25px;
+}
+
+@media(max-width:768px) {
+    header { justify-content:center; }
+    nav { justify-content:center; }
+    .hero h1 { font-size:31px; }
+    .values { grid-template-columns:1fr; }
+    section { padding:45px 6%; }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">💜 Light in the Web</div>
+    <nav>
+        <a href="dablo home.html">Home</a>
+        <a href="about.html" class="active">About</a>
+        <a href="dablo programs.html">Programs</a>
+        <a href="volunteer.html">Volunteer</a>
+        <a href="index.html">Logout</a>
+    </nav>
+</header>
+
+<div class="hero">
+    <div class="hero-content">
+        <h1>About Community Service</h1>
+        <p>
+            Serving others is one of the simplest ways
+            to show love, kindness, and responsibility.
+        </p>
+    </div>
+</div>
+
+<section>
+    <h2 class="title">What is Community Service?</h2>
+
+    <div class="content">
+        <p>
+            Community service is an activity where people
+            voluntarily give their time and effort to help
+            others without expecting anything in return.
+        </p>
+
+        <p>
+            It includes helping families in need, cleaning
+            public places, planting trees, donating essential
+            items, and participating in community outreach.
+        </p>
+
+        <h3>Why is it Important?</h3>
+        <p>
+            Community service teaches us compassion,
+            teamwork, discipline, and respect. It also
+            helps build a stronger and more peaceful society.
+        </p>
+
+        <h3>Our Core Values</h3>
+        <p>
+            We believe that every person can make a difference
+            through simple actions and a willingness to help.
+        </p>
+
+        <div class="values">
+            <div class="value-card">💜 Kindness</div>
+            <div class="value-card">🤝 Teamwork</div>
+            <div class="value-card">🌱 Responsibility</div>
+            <div class="value-card">❤️ Compassion</div>
+        </div>
+
+        <h3>Our Purpose</h3>
+        <p>
+            Our purpose is to inspire people to become active
+            members of the community and use their abilities
+            to help those who need support.
+        </p>
+    </div>
+</section>
+
+<footer>
+    <h3> Light in the Web</h3>
+    <p>Be a light to others through kindness and service.</p>
+    <p>© 2026 Community Service Project</p>
+</footer>
+
+</body>
+</html>
